@@ -28,17 +28,24 @@
 <br>
 <br>
 
+<label th:text="${messageRegister}"></label>
+
 <h2>Inicio de sesión</h2>
+<form action="#" th:action="@{login-user}" th:object="${user}" method="post">
 
-<label>Usuario</label>
-<input type="text">
 
-<label>Contraseña</label>
-<input type="password">
+    <label>Usuario</label>
+    <input type="text" th:field="*{username}">
 
-<br>
-<br>
+    <label>Contraseña</label>
+    <input type="password" th:field="*{password}">
 
-<button type="button">Iniciar sesión</button>
+    <br>
+    <br>
+
+    <button type="submit">Iniciar sesión</button>
+
+    <label th:text="${loginIncorrect}"></label>
+</form>
 </body>
 </html>

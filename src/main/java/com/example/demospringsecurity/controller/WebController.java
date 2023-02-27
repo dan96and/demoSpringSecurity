@@ -23,11 +23,41 @@ public class WebController {
     }
 
     @PostMapping("/new-user")
-    public String newUser(@ModelAttribute User user){
+    public String newUser(@ModelAttribute User user, Model model) {
 
-        userService.registerUser(user);
+        if(userService.registerUser(user)){
+            model.addAttribute("messageRegister", "Usuario registrado correctamente");
+        }else{
+            model.addAttribute("messageRegister", "NO se ha podido registrar el usuario. Intentelo de nuevo mas tarde.");
+        }
 
-        return "userRegistration";
+        return "index";
+    }
+
+    @PostMapping("/login-user")
+    public String loginUser(@ModelAttribute User user, Model model) {
+
+//        if (userService.loginUser(user)) {
+//            return home();
+//        } else {
+//            model.addAttribute("loginIncorrect", "El usuario que ha introducido no es correcto, vuelve a introducirlo");
+//        }
+        return "index";
+    }
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping("/home/screenUser")
+    public String screenUser() {
+        return "screenUser";
+    }
+
+    @GetMapping("/home/screenAdmin")
+    public String screenAdmin(){
+        return("screenAdmin");
     }
 
 }
