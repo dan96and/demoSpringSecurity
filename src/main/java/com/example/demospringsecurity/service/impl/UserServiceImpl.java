@@ -26,18 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean loginUser(User user) {
-
-        User userBBDD = userRepository.findByUsername(user.getUsername());
-
-        if (userBBDD == null) {
-            return false;
-        }else return userBBDD.getUsername().equals(user.getUsername());
-
-    }
-
-    @Override
     public User findUserByUsername(String username) {
-        return findUserByUsername(username);
+        return userRepository.findByUsername(username);
     }
 }

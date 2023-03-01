@@ -16,8 +16,8 @@
     <input type="password" th:field="*{password}">
 
     <select th:field="*{role}">
-        <option th:value="Admin">Admin</option>
-        <option th:value="User">User</option>
+        <option th:value="admin">Admin</option>
+        <option th:value="user">User</option>
     </select>
 
     <br>
@@ -31,21 +31,19 @@
 <label th:text="${messageRegister}"></label>
 
 <h2>Inicio de sesión</h2>
-<form action="#" th:action="@{login-user}" th:object="${user}" method="post">
-
+<form th:action="@{/login}"  method="post">
 
     <label>Usuario</label>
-    <input type="text" th:field="*{username}">
+    <input type="text">
 
     <label>Contraseña</label>
-    <input type="password" th:field="*{password}">
+    <input type="password">
 
     <br>
     <br>
 
     <button type="submit">Iniciar sesión</button>
 
-    <label th:text="${loginIncorrect}"></label>
 </form>
 </body>
 </html>

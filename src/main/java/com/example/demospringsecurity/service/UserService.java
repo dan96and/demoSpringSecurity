@@ -7,8 +7,6 @@ public interface UserService {
 
     Boolean registerUser(User user);
 
-    Boolean loginUser(User user);
-
     User findUserByUsername(String username);
 
 }
