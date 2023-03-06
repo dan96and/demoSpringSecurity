@@ -33,13 +33,18 @@
 <h2>Inicio de sesión</h2>
 <form th:action="@{/login}"  method="post">
 
-    <label>Usuario</label>
-    <input type="text">
+    <label >Usuario</label>
+    <input name = "username" type="text">
 
     <label>Contraseña</label>
-    <input type="password">
+    <input name = "password" type="password">
 
     <br>
+
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+
     <br>
 
     <button type="submit">Iniciar sesión</button>

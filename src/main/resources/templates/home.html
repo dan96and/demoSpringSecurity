@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home Screen</title>
 </head>
 <body>
 <h2>Pantalla Home - En esta pantalla todos los usuarios tienen acceso</h2>
-
-<a th:href="@{/home/screenUser}">Acceder a la pantalla de Usuario</a>
-
+<div sec:authorize="hasAuthority('user')">
+    <a th:href="@{/home/screenUser}">Acceder a la pantalla de Usuario</a>
+</div>
 <br>
+<div sec:authorize="hasAuthority('admin')">
+    <a th:href="@{/home/screenAdmin}">Acceder a la pantalla de Admin</a>
+</div>
 <br>
-
-<a th:href="@{/home/screenAdmin}">Acceder a la pantalla de Admin</a>
+<form method="post" th:action="@{/logout}">
+    <input type="submit" value="Sign Out"/>
+</form>
 
 </body>
 </html>

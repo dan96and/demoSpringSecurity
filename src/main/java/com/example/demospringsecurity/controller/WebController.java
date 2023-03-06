@@ -16,10 +16,10 @@ public class WebController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/index")
+    @GetMapping("/login")
     public String index(Model model) {
         model.addAttribute("user", new User());
-        return "index";
+        return "login";
     }
 
     @PostMapping("/new-user")

@@ -6,7 +6,7 @@ public class Constants {
 
 
     public static final String LOGIN_FAILURE_URL = "/ok";
-    public static final String LOGIN_URL = "/index";
+    public static final String LOGIN_URL = "/login";
     public static final String LOGIN_SUCCESS_URL = "/home";
 
 }
