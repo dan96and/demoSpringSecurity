@@ -18,6 +18,7 @@ public class SecurityConfig {
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
+    // Configuración del Authentication Manager
     @Bean
     AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsServiceImpl userDetailsService) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
@@ -26,6 +27,7 @@ public class SecurityConfig {
                 .and().build();
     }
 
+    // Configuración de la seguridad de la aplicación
     @Bean
     public SecurityFilterChain configureMvcSecurity(HttpSecurity http) throws Exception {
         http
@@ -44,17 +46,18 @@ public class SecurityConfig {
         return http.build();
     }
 
-
+    // Cifrado de contraseñas
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public WebSecurityCustomizer webSecurityCustomizer() {
-//        return (web) -> web
-//                .ignoring()
-//                .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");
-//    }
+    // Configuración para ignorar ciertas rutas
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web
+                .ignoring()
+                .requestMatchers("/resources/**", "/css/**", "/js/**", "/img/**", "/lib/**");
+    }
 
 }

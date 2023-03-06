@@ -21,8 +21,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
 
+    //Busca al usuario en BBDD y llama el metodo para crear la autentificación
     @Override
-    @Transactional
+    @Transactional //Asegura que todos las operaciones de un método se completen correctamente, o se revierten si fallan.
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userService.findUserByUsername(username);
@@ -37,6 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return buildUserForAuthentication(user, authorities);
     }
 
+    //Construye la autentificación
     public UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 true, true, true, true, authorities);
